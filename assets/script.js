@@ -14,10 +14,14 @@ $(document).ready(function(){
             $('.humidity').text(response.main.humidity);
             $('.speed').text(response.wind.speed);
             // call UV information
-            // var UVCall = "http://api.openweathermap.org/data/2.5/uvi?lat="+lat+'&lon='+lon+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b"
-            // var lat = response.coords.lat;
-            // var lon = response.coords.lon;
-            
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
+            $.ajax({
+                url:"http://api.openweathermap.org/data/2.5/uvi?lat="+lat+'&lon='+lon+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b",
+                method: 'GET'
+            }).then(function(uvCall){
+                $('.uvIndex').text(uvCall.value);
+            })
         })   
     }
     // get input data from local storage 
