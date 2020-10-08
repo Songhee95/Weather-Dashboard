@@ -40,13 +40,38 @@ $(document).ready(function(){
             })
             // 5days weather info call
             $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b",
+                url: "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial",
                 method: 'GET'
             }).then(function(dayWeather){
                 console.log(dayWeather);
+                var weatherArr = [];
                 var i=4;
+                // call only 5 days of weather info
                 while(i<37){
-                    console.log(dayWeather.list[i])
+                    var daysTimeStamp= dayWeather.list[i].dt_txt;
+                    var daysDate=daysTimeStamp.slice(0,10);
+                    console.log(dayWeather.list[i]);
+                    var daysIcon = dayWeather.list[i].weather[0].icon;
+                    var daysTemp = dayWeather.list[i].main.temp;
+                    var daysHumidity = dayWeather.list[i].main.humidity;
+                    var newElementWrap = $('<div class="card text-white bg-primary d-inline-block" style="max-width:13rem"></div>');
+                    var newElementBody = $('<div class="card-body float-right mr-0">');
+                    var newElementDate =$('<h5 class="card-title"></h5>');
+                    var newElementIcon = $('<img>');
+                    var newElementInfo = $('<p class="card-text"></p>');
+                    var newElementTemp = $('<p class="temp-days"></p>');
+                    var newElementHumidity = $('<p class="humidity-days"></p>');
+                    newElementDate.text(daysDate);
+                    newElementIcon.attr('src','http://openweathermap.org/img/wn/'+daysIcon+'.png');
+                    newElementTemp.text('Temp: '+daysTemp +"&#8457;");
+                    newElementHumidity.text('Humidity: '+daysHumidity+"%");
+                    newElementInfo.append(newElementTemp);
+                    newElementInfo.append(newElementHumidity);
+                    newElementBody.append(newElementDate);
+                    newElementBody.append(newElementIcon);
+                    newElementBody.append(newElementInfo);
+                    newElementWrap.append(newElementBody);
+                    $('.5-day-forecast').append(newElementWrap);
                     i=i+8;
                 }
             })  
