@@ -7,7 +7,6 @@ $(document).ready(function(){
             url : queryURL,
             method : 'GET' ,
         }).then(function(response){
-            console.log(response);
             var icon =response.weather[0].icon;
             var timeStamp = new Date(response.dt*1000);
             var year = timeStamp.getFullYear();
@@ -26,7 +25,6 @@ $(document).ready(function(){
                 url:"http://api.openweathermap.org/data/2.5/uvi?lat="+lat+'&lon='+lon+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b",
                 method: 'GET'
             }).then(function(uvCall){
-                console.log(uvCall);
                 $('.uvIndex').text(uvCall.value);
                 if(uvCall.value<=2){
                     $('.uvIndex').attr('style','background-color:rgb(79, 180, 0); border-radius:0.3rem');
@@ -46,7 +44,11 @@ $(document).ready(function(){
                 method: 'GET'
             }).then(function(dayWeather){
                 console.log(dayWeather);
-                // $('#cityName').text(dayWeather.weather[icon])
+                var i=4;
+                while(i<37){
+                    console.log(dayWeather.list[i])
+                    i=i+8;
+                }
             })  
         }) 
     }
