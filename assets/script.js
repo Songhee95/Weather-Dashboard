@@ -88,6 +88,7 @@ $(document).ready(function(){
         $('.5-day-forecast').empty();
         var userInput = $('input').val();
         getCity(userInput);
+        $('.search-log').append(userInput);
         cityArray.push(userInput);
         localStorage.setItem('city', JSON.stringify(cityArray));
     })
