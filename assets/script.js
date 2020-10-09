@@ -81,26 +81,36 @@ $(document).ready(function(){
         var show = JSON.parse(localStorage.getItem('city'));
         if(show !== null){
             cityArray = show;
-            console.log(cityArray);
             for(var i=0; i<cityArray.length; i++){
                 var newElementArray = $("<li class='list-group-item list-group-item-light' id='list'></li>");
+                var clearButton = $('<button id="clearBtn"><i class="fa fa-trash" aria-hidden="true"></i></button>')
                 newElementArray.text(cityArray[i]);
+                clearButton.attr('data-index',cityArray[i]);
+                newElementArray.append(clearButton);
                 $('.search-log').append(newElementArray);
             }
         }
+        // if click clear btn, delete that userInput from array
+        $('li').on('click','#clearBtn', function(){
+            var clearIndex = $(this).data().index;
+            console.log(cityArray);
+            cityArray.splice(clearIndex,1);
+            cityArray = show;
+            console.log(cityArray);
+            localStorage.setItem('city', JSON.stringify(cityArray));
+        })
     }
     // store input data to local storage
-    $('button').on('click', function(){
+    $('#button-addon2').on('click', function(){
         $('.5-day-forecast').empty();
         var userInput = $('input').val();
         getCity(userInput);
         if(userInput != "" && cityArray.indexOf(userInput)==-1){
-            var newElementInput= $('<li class="list-group-item list-group-item-light"></li>');
-            newElementInput.text(userInput);
-            $('.search-log').append(newElementInput);
             cityArray.push(userInput);
             localStorage.setItem('city', JSON.stringify(cityArray));
         }
+        $('.search-log').empty();
+        init();
         $('input').val("");
     })
     init();
