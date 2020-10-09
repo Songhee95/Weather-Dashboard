@@ -9,12 +9,22 @@ header{
 input{
     text-align: center;
 }
+.container{
+    text-align: center;
+    line-height: 300%;
+}
+.search-box{
+    border: 1px solid rgb(221, 213, 213);
+}
 .search-head{
     margin: 5px 0;
     padding: 0 5px;
     font-size: 2rem;
     font-weight: 500;
     color: rgb(100, 98, 98);
+}
+#cityWrap{
+    margin-bottom: 0;
 }
 .lead{
     font-family: 'Merriweather', serif;
@@ -27,10 +37,6 @@ input{
 }
 .card{
     margin: 15px;
-}
-#container{
-    text-align: center;
-    line-height: 300%;
 }
 #cityName{
     color:  rgb(154, 168, 180);
