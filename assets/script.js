@@ -43,14 +43,13 @@ $(document).ready(function(){
                 url: "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial",
                 method: 'GET'
             }).then(function(dayWeather){
-                console.log(dayWeather);
-                var weatherArr = [];
+                
                 var i=4;
                 // call only 5 days of weather info
                 while(i<37){
                     var daysTimeStamp= dayWeather.list[i].dt_txt;
-                    var daysDate=daysTimeStamp.slice(0,10);
-                    console.log(dayWeather.list[i]);
+                    var days=daysTimeStamp.slice(0,10).split("-");
+                    var daysDate =days[1]+"/"+days[2]+"/"+days[0];
                     var daysIcon = dayWeather.list[i].weather[0].icon;
                     var daysTemp = dayWeather.list[i].main.temp;
                     var daysHumidity = dayWeather.list[i].main.humidity;
@@ -86,6 +85,7 @@ $(document).ready(function(){
     }
     // store input data to local storage
     $('button').on('click', function(){
+        $('.5-day-forecast').empty();
         var userInput = $('input').val();
         getCity(userInput);
         cityArray.push(userInput);
