@@ -10,36 +10,45 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="container">
     <header>
-        <div class="col-2">WEATHER</div> <div class="col-2 offset-2">DASHBOARD</div>
+        <div>WEATHER DASHBOARD</div>
     </header>
     <section class="search-box">
-        Search for a City
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="button-addon2">
+        <p class="search-head">Search for a City</p>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="City Name" aria-label="City Name">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                  </svg>
+              </button>
             </div>
         </div>
         <div class="search-log"></div>
     </section>
     <section class="weather-info">
         <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4" id="cityName" style="color: rgb(153, 170, 184);">City</h1>
+            <div class="infoWrap">
+              <h1 class="display-4" id="cityName">City</h1>
               <div class="lead">
-                  <p>Temperature : <span class="temp"></span> &#8457;</p>
-                  <p>Humidity : <span class="humidity"></span> %</p>
-                  <p>Wind Speed : <span class="speed"></span> MPH</p>
+                  <p>Temperature : <span class="temp"></span></p>
+                  <p>Humidity : <span class="humidity"></span></p>
+                  <p>Wind Speed : <span class="speed"></span></p>
                   <p>UV index : <span class="uvIndex"></span></p>
               </div>
             </div>
           </div>
     </section>
-    <section class="5-day-forecast">
-    </section>
-    <script src="./assets/script.js"></script>
-</body>
+    <div class='forecastWrap'>
+        <p id="forecast-head">5 Days Forecast</p>
+        <section class="5-day-forecast">
+        </section>
+        <script src="./assets/script.js"></script>
+    </div>
+    </body>
 </html>

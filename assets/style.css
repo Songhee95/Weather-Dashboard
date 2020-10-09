@@ -1,5 +1,58 @@
 header{
-    font-size: 3rem;
+    height: 150px;
+    padding-top: 30px;
+    font-size: 2.5rem;
     background-color: rgba(9, 9, 32, 0.788);
     color: rgba(255, 248, 220, 0.808);
+    font-family: 'Merriweather', serif;
 }
+input{
+    text-align: center;
+}
+.search-head{
+    margin: 5px 0;
+    padding: 0 5px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgb(100, 98, 98);
+}
+.lead{
+    font-family: 'Merriweather', serif;
+    color: rgb(122, 134, 144);
+    margin: 0 40px;
+}
+.uvIndex{
+    padding: 5px;
+    color: white;
+}
+.card{
+    margin: 15px;
+}
+#container{
+    text-align: center;
+    line-height: 300%;
+}
+#cityName{
+    color:  rgb(154, 168, 180);
+    margin-bottom: 15px;
+}
+#forecast-head{
+    margin: 5px 0;
+    padding: 0 5px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgb(100, 98, 98);
+}
+#list{
+    font-size: 1.5rem;
+}
+#list:hover{
+    background-color: whitesmoke;
+}
+
+@media screen and (min-width:486px){
+    header{
+        padding-top: 50px;
+    }
+}
+

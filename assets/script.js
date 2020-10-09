@@ -15,9 +15,9 @@ $(document).ready(function(){
             // display information from API
             $('#cityName').text(response.name +" ("+month+'/'+date+"/"+year+")");
             $('#cityName').append("<img src='http://openweathermap.org/img/wn/"+icon+".png'/>");
-            $('.temp').text(response.main.temp);
-            $('.humidity').text(response.main.humidity);
-            $('.speed').text(response.wind.speed);
+            $('.temp').text(response.main.temp +"℉");
+            $('.humidity').text(response.main.humidity +"%");
+            $('.speed').text(response.wind.speed +"MPH");
             // call UV information
             var lat = response.coord.lat;
             var lon = response.coord.lon;
@@ -62,7 +62,7 @@ $(document).ready(function(){
                     var newElementHumidity = $('<p class="humidity-days"></p>');
                     newElementDate.text(daysDate);
                     newElementIcon.attr('src','http://openweathermap.org/img/wn/'+daysIcon+'.png');
-                    newElementTemp.text('Temp: '+daysTemp +"&#8457;");
+                    newElementTemp.text('Temp: '+daysTemp + "℉");
                     newElementHumidity.text('Humidity: '+daysHumidity+"%");
                     newElementInfo.append(newElementTemp);
                     newElementInfo.append(newElementHumidity);
@@ -83,7 +83,7 @@ $(document).ready(function(){
             cityArray = show;
             console.log(cityArray);
             for(var i=0; i<cityArray.length; i++){
-                var newElementArray = $("<li class='list-group-item list-group-item-light'></li>");
+                var newElementArray = $("<li class='list-group-item list-group-item-light' id='list'></li>");
                 newElementArray.text(cityArray[i]);
                 $('.search-log').append(newElementArray);
             }
