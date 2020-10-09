@@ -81,6 +81,12 @@ $(document).ready(function(){
         var show = JSON.parse(localStorage.getItem('city'));
         if(show !== null){
             cityArray = show;
+            console.log(cityArray);
+            for(var i=0; i<cityArray.length; i++){
+                var newElementArray = $("<li class='list-group-item list-group-item-light'></li>");
+                newElementArray.text(cityArray[i]);
+                $('.search-log').append(newElementArray);
+            }
         }
     }
     // store input data to local storage
@@ -88,9 +94,14 @@ $(document).ready(function(){
         $('.5-day-forecast').empty();
         var userInput = $('input').val();
         getCity(userInput);
-        $('.search-log').append(userInput);
-        cityArray.push(userInput);
-        localStorage.setItem('city', JSON.stringify(cityArray));
+        if(userInput != "" && cityArray.indexOf(userInput)==-1){
+            var newElementInput= $('<li class="list-group-item list-group-item-light"></li>');
+            newElementInput.text(userInput);
+            $('.search-log').append(newElementInput);
+            cityArray.push(userInput);
+            localStorage.setItem('city', JSON.stringify(cityArray));
+        }
+        $('input').val("");
     })
     init();
 })
