@@ -98,6 +98,8 @@ $(document).ready(function(){
             cityArray = show;
             console.log(cityArray);
             localStorage.setItem('city', JSON.stringify(cityArray));
+            $('.search-log').empty();
+            init();
         })
     }
     // store input data to local storage
