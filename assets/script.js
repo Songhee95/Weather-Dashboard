@@ -85,11 +85,18 @@ $(document).ready(function(){
                 var newElementArray = $("<li class='list-group-item list-group-item-light' id='list'></li>");
                 var clearButton = $('<button id="clearBtn"><i class="fa fa-trash" aria-hidden="true"></i></button>')
                 newElementArray.text(cityArray[i]);
+                newElementArray.attr('data-index', cityArray[i]);
                 clearButton.attr('data-index',cityArray[i]);
                 newElementArray.append(clearButton);
                 $('.search-log').append(newElementArray);
             }
         }
+        // if click list area, display weather info of clicked city
+        $('li').on('click', function(){
+            $('.5-day-forecast').empty();
+            var cityClicked = $(this).data().index;
+            getCity(cityClicked);
+        })
         // if click clear btn, delete that userInput from array
         $('li').on('click','#clearBtn', function(){
             var clearIndex = $(this).data().index;
