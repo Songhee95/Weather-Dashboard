@@ -42,6 +42,12 @@ input{
     color:  rgb(154, 168, 180);
     margin-bottom: 15px;
 }
+#button-addon2:active{
+    background-color: rgb(66, 65, 65);
+}
+#button-addon2:focus{
+    box-shadow: none;
+}
 #forecast-head{
     margin: 5px 0;
     padding: 0 5px;
@@ -50,6 +56,7 @@ input{
     color: rgb(100, 98, 98);
 }
 #list{
+    cursor: pointer;
     font-size: 1.5rem;
     position: relative;
 }
@@ -64,7 +71,7 @@ input{
     right: 10px;
 }
 #clearBtn:hover{
-    color: rgb(29, 28, 28);
+    color: rgb(122, 119, 119);
 }
 @media screen and (min-width:486px){
     header{
