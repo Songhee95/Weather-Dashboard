@@ -83,7 +83,7 @@ $(document).ready(function(){
             cityArray = show;
             for(var i=0; i<cityArray.length; i++){
                 var newElementArray = $("<li class='list-group-item list-group-item-light' id='list'></li>");
-                var clearButton = $('<button id="clearBtn"><i class="fa fa-trash" aria-hidden="true"></i></button>')
+                var clearButton = $('<i id="clearBtn" class="fa fa-trash fa-2x" aria-hidden="true"></i>')
                 newElementArray.text(cityArray[i]);
                 newElementArray.attr('data-index', cityArray[i]);
                 clearButton.attr('data-index',cityArray[i]);

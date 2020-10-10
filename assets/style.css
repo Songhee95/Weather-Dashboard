@@ -23,9 +23,6 @@ input{
     font-weight: 500;
     color: rgb(100, 98, 98);
 }
-#cityWrap{
-    margin-bottom: 0;
-}
 .lead{
     font-family: 'Merriweather', serif;
     color: rgb(122, 134, 144);
@@ -37,6 +34,9 @@ input{
 }
 .card{
     margin: 15px;
+}
+#cityWrap{
+    margin-bottom: 0;
 }
 #cityName{
     color:  rgb(154, 168, 180);
@@ -51,11 +51,21 @@ input{
 }
 #list{
     font-size: 1.5rem;
+    position: relative;
 }
 #list:hover{
     background-color: whitesmoke;
 }
-
+#clearBtn{
+    color: rgb(212, 207, 207);
+    position: absolute;
+    border:none;
+    margin-left: 50px;
+    right: 10px;
+}
+#clearBtn:hover{
+    color: rgb(29, 28, 28);
+}
 @media screen and (min-width:486px){
     header{
         padding-top: 50px;
