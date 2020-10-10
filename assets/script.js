@@ -78,6 +78,8 @@ $(document).ready(function(){
     }
     // get input data from local storage 
     function init(){
+        // get focus on the input search box
+        $('.form-control').focus();
         var show = JSON.parse(localStorage.getItem('city'));
         if(show !== null){
             cityArray = show;
