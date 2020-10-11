@@ -72,7 +72,7 @@ $(document).ready(function(){
                     var newElementTemp = $('<p class="temp-days"></p>');
                     var newElementHumidity = $('<p class="humidity-days"></p>');
                     newElementDate.text(daysDate);
-                    newElementIcon.attr('src','http://openweathermap.org/img/wn/'+daysIcon+'.png');
+                    newElementIcon.attr('src','https://openweathermap.org/img/wn/'+daysIcon+'.png');
                     newElementTemp.text('Temp: '+daysTemp + "℉");
                     newElementHumidity.text('Humidity: '+daysHumidity+"%");
                     newElementInfo.append(newElementTemp);
