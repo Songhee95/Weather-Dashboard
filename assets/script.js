@@ -94,37 +94,52 @@ $(document).ready(function(){
         var show = JSON.parse(localStorage.getItem('city'));
         if(show !== null){
             cityArray = show;
-            for(var i=0; i<cityArray.length; i++){
-                var newElementArray = $("<li class='list-group-item list-group-item-light' id='list'></li>");
-                var clearButton = $('<i id="clearBtn" class="fa fa-trash fa-2x" aria-hidden="true"></i>')
-                newElementArray.text(cityArray[i]);
-                newElementArray.attr('data-index', cityArray[i]);
-                clearButton.attr('data-index',cityArray[i]);
-                newElementArray.append(clearButton);
-                $('.search-log').append(newElementArray);
-            }
+            createArrayList();
         }
-        // if click list area, display weather info of clicked city
-        $('li').on('click', function(){
-            $('.5-day-forecast').empty();
-            var cityClicked = $(this).data().index;
-            getCity(cityClicked);
-        })
-        // if click clear btn, delete that userInput from array
-        $('li').on('click','#clearBtn', function(){
-            var clearIndex = $(this).data().index;
-            cityArray.splice(clearIndex,1);
-            cityArray = show;
-            localStorage.setItem('city', JSON.stringify(cityArray));
-            $('.search-log').empty();
-            init();
-        })
     }
+    function createArrayList(){
+        for(var i=0; i<cityArray.length; i++){
+            var newElementArray = $("<li class='list-group-item list-group-item-light' id='list'></li>");
+            var clearButton = $('<i id="clearBtn" class="fa fa-trash fa-2x" aria-hidden="true"></i>')
+            newElementArray.text(cityArray[i]);
+            newElementArray.attr('data-index', cityArray[i]);
+            clearButton.attr('data-index',cityArray[i]);
+            newElementArray.append(clearButton);
+            $('.search-log').append(newElementArray);
+        }
+    }
+     // if click list area, display weather info of clicked city
+     $('.search-log').on('click','li', function(){
+        $('.5-day-forecast').empty();
+        var cityClicked = $(this).data().index;
+        getCity(cityClicked);
+        console.log('clicked');
+    })
+    // if click clear btn, delete that userInput from array
+    $('.search-log').on('click','#clearBtn', function(event){
+        event.stopPropagation();
+        var clearString = $(this).data().index;
+        var clearIndex = cityArray.indexOf(clearString);
+        cityArray.splice(clearIndex,1);
+        localStorage.setItem('city', JSON.stringify(cityArray));
+        JSON.parse(localStorage.getItem('city'));
+        $('.search-log').empty();
+        createArrayList();
+    })
     // store input data to local storage
-    $('#button-addon2').on('click', function(){
+    $('#button-addon2').on('click', function(event){
+        event.preventDefault();
         $('.5-day-forecast').empty();
         var userInput = $('input').val();
         getCity(userInput);
+    })
+    $(".form-control").on('keypress', function(e){
+        if(e.keyCode ===13){
+            e.preventDefault();
+            $('.5-day-forecast').empty();
+            var userInput = $('input').val();
+            getCity(userInput);
+        }
     })
     init();
 })
