@@ -6,7 +6,18 @@ $(document).ready(function(){
         $.ajax({
             url : queryURL,
             method : 'GET' ,
-        }).then(function(response){
+        })
+        .fail(function(fail){
+        }) 
+        .then(function(response){
+            if(cityArray.indexOf(city)==-1){
+                cityArray.push(city);
+                localStorage.setItem('city', JSON.stringify(cityArray));
+            }
+            $('.search-log').empty();
+            init();
+            $('input').val("");
+
             var icon =response.weather[0].icon;
             var timeStamp = new Date(response.dt*1000);
             var year = timeStamp.getFullYear();
@@ -74,7 +85,7 @@ $(document).ready(function(){
                     i=i+8;
                 }
             })  
-        }) 
+        })
     }
     // get input data from local storage 
     function init(){
@@ -102,10 +113,8 @@ $(document).ready(function(){
         // if click clear btn, delete that userInput from array
         $('li').on('click','#clearBtn', function(){
             var clearIndex = $(this).data().index;
-            console.log(cityArray);
             cityArray.splice(clearIndex,1);
             cityArray = show;
-            console.log(cityArray);
             localStorage.setItem('city', JSON.stringify(cityArray));
             $('.search-log').empty();
             init();
@@ -116,13 +125,6 @@ $(document).ready(function(){
         $('.5-day-forecast').empty();
         var userInput = $('input').val();
         getCity(userInput);
-        if(userInput != "" && cityArray.indexOf(userInput)==-1){
-            cityArray.push(userInput);
-            localStorage.setItem('city', JSON.stringify(cityArray));
-        }
-        $('.search-log').empty();
-        init();
-        $('input').val("");
     })
     init();
 })
