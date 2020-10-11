@@ -51,7 +51,7 @@ $(document).ready(function(){
             })
             // 5days weather info call
             $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial",
+                url: "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial",
                 method: 'GET'
             }).then(function(dayWeather){
                 
