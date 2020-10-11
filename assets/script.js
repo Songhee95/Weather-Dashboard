@@ -2,7 +2,7 @@ $(document).ready(function(){
     var cityArray=[];
     // get city weather information from API
     function getCity(city){
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial";
         $.ajax({
             url : queryURL,
             method : 'GET' ,
@@ -25,7 +25,7 @@ $(document).ready(function(){
             var date = timeStamp.getDate();
             // display information from API
             $('#cityName').text(response.name +" ("+month+'/'+date+"/"+year+")");
-            $('#cityName').append("<img src='http://openweathermap.org/img/wn/"+icon+"@2x.png'/>");
+            $('#cityName').append("<img src='https://openweathermap.org/img/wn/"+icon+"@2x.png'/>");
             $('.temp').text(response.main.temp +"℉");
             $('.humidity').text(response.main.humidity +"%");
             $('.speed').text(response.wind.speed +"MPH");
@@ -33,7 +33,7 @@ $(document).ready(function(){
             var lat = response.coord.lat;
             var lon = response.coord.lon;
             $.ajax({
-                url:"http://api.openweathermap.org/data/2.5/uvi?lat="+lat+'&lon='+lon+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b",
+                url:"https://api.openweathermap.org/data/2.5/uvi?lat="+lat+'&lon='+lon+"&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b",
                 method: 'GET'
             }).then(function(uvCall){
                 $('.uvIndex').text(uvCall.value);
@@ -51,7 +51,7 @@ $(document).ready(function(){
             })
             // 5days weather info call
             $.ajax({
-                url: "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial",
+                url: "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&exclude=hourly,minutely,current&appid=7e7ac2e4d0df13d3af84f0a0b1ffdd9b&units=imperial",
                 method: 'GET'
             }).then(function(dayWeather){
                 
