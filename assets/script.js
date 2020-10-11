@@ -25,7 +25,7 @@ $(document).ready(function(){
             var date = timeStamp.getDate();
             // display information from API
             $('#cityName').text(response.name +" ("+month+'/'+date+"/"+year+")");
-            $('#cityName').append("<img src='http://openweathermap.org/img/wn/"+icon+".png'/>");
+            $('#cityName').append("<img src='http://openweathermap.org/img/wn/"+icon+"@2x.png'/>");
             $('.temp').text(response.main.temp +"℉");
             $('.humidity').text(response.main.humidity +"%");
             $('.speed').text(response.wind.speed +"MPH");
