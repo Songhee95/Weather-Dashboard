@@ -19,11 +19,10 @@ The search history can be stored on the search log section and can be cleared by
 
 ## URLs
 1. Deployed URL
-    https://github.com/Songhee95/Weather-Dashboard
+    https://songhee95.github.io/Weather-Dashboard/
 
 2. Github Page URL
-    [Github](https://songhee95.github.io/Weather-Dashboard/)
-
+    [Github](https://github.com/Songhee95/Weather-Dashboard)
 
 ## Usage
 ![GitHub Logo](./assets/1.PNG)
