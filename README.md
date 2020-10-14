@@ -4,6 +4,7 @@
 Whenever, Wherever Search and find weather information. Only thing to do is to put city name in the search box. The weather information includes Temperature, Humidity, Wind Speed, UV index and 5 days additional weather information. 
 
 [UV index color type]
+
 ![UV index color type](./assets/3.PNG)
 
 The search history can be stored on the search log section and can be cleared by user. 
